@@ -8,7 +8,7 @@ jobs:
     steps:
       - gcp-gke/install
       - gcp-gke/update-kubeconfig-with-credentials:
-          cluster: devops-p4
+          cluster: twy-staging
           perform-login: true
       - helm/install-helm-chart:
           chart: ./charts/ipfs-cluster
