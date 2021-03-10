@@ -1,19 +1,21 @@
 jobs:
-  install-helm-chart:
+  deploy-to-staging:
     executor: gcp-gke/default
     parameters:
       cluster-name:
         description: "Cluster name"
         type: string
     steps:
+      - checkout
       - gcp-gke/install
       - gcp-gke/update-kubeconfig-with-credentials:
           cluster: twy-staging
           perform-login: true
       - helm/install-helm-chart:
-          chart: ./charts/ipfs-cluster
+          chart: charts/ipfs-cluster
           helm-version: v3.2.4
           release-name: twy
+          namespace: staging
 version: 2.1
 orbs:
   helm: circleci/helm@1.2.0
@@ -24,6 +26,6 @@ workflows:
   deployment:
     # Run the welcome/run job in its own container
     jobs:
-      - install-helm-chart:
+      - deploy-to-staging:
           cluster-name: twy-staging
 
