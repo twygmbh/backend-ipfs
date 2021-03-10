@@ -19,7 +19,7 @@ jobs:
               wget https://github.com/roboll/helmfile/releases/download/v0.138.7/helmfile_linux_amd64
               mv helmfile_linux_amd64 helmfile
               chmod +x helmfile
-              ./helmfile --environment staging template
+              ./helmfile --environment staging sync
 version: 2.1
 orbs:
   helm: circleci/helm@1.2.0
