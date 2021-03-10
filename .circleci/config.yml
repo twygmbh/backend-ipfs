@@ -17,6 +17,7 @@ jobs:
           name: Install helm-helmfile
           command: |
               wget https://github.com/roboll/helmfile/releases/download/v0.138.7/helmfile_linux_arm64
+              mv helmfile_linux_arm64 helmfile
               ./helmfile --environment staging template
 version: 2.1
 orbs:
